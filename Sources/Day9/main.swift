@@ -55,30 +55,30 @@ func visit(i: Int, j: Int) {
     if matrix[i][j] == 9 || basinMatrix[i][j] >= 0 {
         return
     }
-    
+
     basinMatrix[i][j] = nextBasin
-    
+
 //    printMatrix()
-    
+
     var checkIs = [-1, 1]
     var checkJs = [-1, 1]
-    
+
     if i == 0 {
         checkIs.removeFirst()
     } else if i == matrix.count - 1 {
         checkIs.removeLast()
     }
-    
+
     if j == 0 {
         checkJs.removeFirst()
     } else if j == matrix.first!.count - 1 {
         checkJs.removeLast()
     }
-    
+
     for checkI in checkIs {
         visit(i: i + checkI, j: j)
     }
-    
+
     for checkJ in checkJs {
         visit(i: i, j: j + checkJ)
     }
@@ -92,7 +92,7 @@ for (i, row) in matrix.enumerated() {
         } else if basinMatrix[i][j] >= 0 {
             continue
         }
-        
+
         visit(i: i, j: j)
         nextBasin += 1
     }
